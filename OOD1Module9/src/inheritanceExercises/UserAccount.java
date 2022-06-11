@@ -42,20 +42,17 @@ public abstract class UserAccount {
 	//abstract method
 	//I need to re-watch lecture and take notes on abstract methods.
 	public boolean changePassword(String newPass, String confirmPass) {
-		//TODO improve the password checking logic
-		String newPass;
-		String confirmPass;
 		
-		if (newPass == confirmPass) {
-			System.out.println("Password changed! You may login now");
+		if(newPass.length() < confirmPass.length()) {
+			System.out.println("Please try again");
+			return false;
+		}
+		
+		if(newPass.length() == confirmPass.length()) {
+			System.out.println("Your password has been changed");
 			return true;
-			} else if ((!newPass) == confirmPass){
-				System.out.println("Password was NOT changed! Try again");
-				return false;
-			} else {
-				System.out.println("Something went wrong! Try again");
-				return false;
-			}
+			
+		} return false;
 		
 	}
 	
