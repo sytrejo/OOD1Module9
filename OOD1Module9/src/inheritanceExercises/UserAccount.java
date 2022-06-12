@@ -3,7 +3,7 @@ package inheritanceExercises;
 public abstract class UserAccount {
 	
 	private String username;
-	private String password;
+	protected String password;
 	private String fullname;
 	
 	//constructor
@@ -43,16 +43,11 @@ public abstract class UserAccount {
 	//I need to re-watch lecture and take notes on abstract methods.
 	public boolean changePassword(String newPass, String confirmPass) {
 		
-		if(newPass.length() < confirmPass.length()) {
-			System.out.println("Please try again");
-			return false;
-		}
-		
-		if(newPass.length() == confirmPass.length()) {
-			System.out.println("Your password has been changed");
+		if(newPass.equals(confirmPass)) {
+			this.password = newPass;
 			return true;
-			
-		} return false;
+		}
+		return false;
 		
 	}
 	

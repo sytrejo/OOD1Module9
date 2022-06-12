@@ -1,27 +1,71 @@
 package inheritanceExercises;
 
-public class AdminUser {
+public class AdminUser extends UserAccount{
 	
-	//attributes
-	public String username;
-	public String password;
-	public String fullname;
+	private static int minAdminPasswordLength;
 	
 	//constructor
 	public AdminUser(String username, String password, String fullname) {
-		this.username = username;
-		this.password = password;
-		this.fullname = fullname;
+		super(username, password, fullname);
 	}
 	
+	
+	//getters and setters
+	
+	
+	@Override
 	public void accessWebsite() {
 		System.out.println("Welcome! You are now signed in as ADMIN");
 	}
 	
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	
+	public static int getMinAdminPasswordLength() {
+		return minAdminPasswordLength;
+		
 	}
+	
+
+	public static void setMinAdminPasswordLength(int length) {
+		minAdminPasswordLength = length;
+	}
+	
+	@Override
+	public boolean changePassword(String newPass, String confirmPass) {
+		
+		if(newPass.equals(confirmPass) && newPass.length() >= AdminUser.getMinAdminPasswordLength()) {
+			this.password = newPass;
+			return true;
+		}
+		return false;
+		
+	}
+	
+	public boolean changePassword(String newPass, String confirmPass, UserAccount user) {
+		return user.changePassword(newPass, confirmPass);
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
